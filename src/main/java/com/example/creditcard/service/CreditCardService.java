@@ -5,6 +5,8 @@ import com.example.creditcard.exception.ResourceNotFoundException;
 import com.example.creditcard.model.CreditCard;
 import com.example.creditcard.repository.CreditCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -30,5 +32,9 @@ public class CreditCardService {
         return creditCardRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Credit Card not found with id: " + id));
 
+    }
+
+    public Page<CreditCard> getAllCards(Pageable pageable){
+        return creditCardRepository.findAll(pageable);
     }
 }

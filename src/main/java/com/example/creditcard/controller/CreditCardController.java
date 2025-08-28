@@ -6,6 +6,8 @@ import com.example.creditcard.model.CreditCard;
 import com.example.creditcard.service.CreditCardService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +26,10 @@ public class CreditCardController {
     @GetMapping("/{id}")
     public ResponseEntity<CreditCard> getCardById(@PathVariable Long id){
         return ResponseEntity.ok(creditCardService.getCardById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<CreditCard>> getAllCards(Pageable pageable){
+        return ResponseEntity.ok(creditCardService.getAllCards(pageable));
     }
 }
