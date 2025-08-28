@@ -2,6 +2,7 @@ package com.example.creditcard.controller;
 
 
 import com.example.creditcard.dto.CreditCardDto;
+import com.example.creditcard.dto.LimitInfoDto;
 import com.example.creditcard.model.CreditCard;
 import com.example.creditcard.service.CreditCardService;
 import jakarta.validation.Valid;
@@ -37,6 +38,11 @@ public class CreditCardController {
     public ResponseEntity<Void> deleteCard(@PathVariable Long id){
         creditCardService.deleteCard(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/limit")
+    public ResponseEntity<LimitInfoDto> getCardLimit(@PathVariable Long id){
+        return ResponseEntity.ok(creditCardService.getCardLimit(id));
     }
 
 }

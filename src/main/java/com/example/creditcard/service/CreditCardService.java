@@ -1,6 +1,7 @@
 package com.example.creditcard.service;
 
 import com.example.creditcard.dto.CreditCardDto;
+import com.example.creditcard.dto.LimitInfoDto;
 import com.example.creditcard.exception.ResourceNotFoundException;
 import com.example.creditcard.model.CreditCard;
 import com.example.creditcard.repository.CreditCardRepository;
@@ -43,5 +44,10 @@ public class CreditCardService {
             throw new ResourceNotFoundException("Credit Card not found with id: " + id);
         }
         creditCardRepository.deleteById(id);
+    }
+
+    public LimitInfoDto getCardLimit(Long id){
+        CreditCard card = getCardById(id);
+        return new LimitInfoDto(card.getTotalLimit(), card.getUsedLimit(), card.getAvailableLimit());
     }
 }
