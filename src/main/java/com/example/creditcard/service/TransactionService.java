@@ -8,6 +8,8 @@ import com.example.creditcard.exception.LimitExceededException;
 import com.example.creditcard.repository.CreditCardRepository;
 import com.example.creditcard.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,5 +39,13 @@ public class TransactionService {
         creditCardRepository.save(card);
 
         return transactionRepository.save(transaction);
+    }
+
+
+    public Page<Transaction> getTransactinByCard(Long cardId, Pageable pageable){
+        if(!creditCardRepository.existsById(cardId)){
+            throw new ResourceNotFoundException("Credit Card not found with id: " + cardId);
+        }
+        return transactionRepository.findByCreditCardId(cardId, pageable);
     }
 }
