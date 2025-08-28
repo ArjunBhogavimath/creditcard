@@ -37,4 +37,11 @@ public class CreditCardService {
     public Page<CreditCard> getAllCards(Pageable pageable){
         return creditCardRepository.findAll(pageable);
     }
+
+    public void deleteCard(Long id){
+        if(!creditCardRepository.existsById(id)){
+            throw new ResourceNotFoundException("Credit Card not found with id: " + id);
+        }
+        creditCardRepository.deleteById(id);
+    }
 }

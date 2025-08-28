@@ -32,4 +32,11 @@ public class CreditCardController {
     public ResponseEntity<Page<CreditCard>> getAllCards(Pageable pageable){
         return ResponseEntity.ok(creditCardService.getAllCards(pageable));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCard(@PathVariable Long id){
+        creditCardService.deleteCard(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
