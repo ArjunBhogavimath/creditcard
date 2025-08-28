@@ -20,6 +20,6 @@ public class TransactionController {
 
     @PostMapping
     public ResponseEntity<Transaction> makeTransaction(@Valid @RequestBody TransactionDto transactionDto){
-        return ResponseEntity.ok()
+        return ResponseEntity.ok(transactionService.makeTransaction(transactionDto));
     }
 }
