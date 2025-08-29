@@ -42,7 +42,7 @@ public class TransactionService {
     }
 
 
-    public Page<Transaction> getTransactinByCard(Long cardId, Pageable pageable){
+    public Page<Transaction> getTransactionByCard(Long cardId, Pageable pageable){
         if(!creditCardRepository.existsById(cardId)){
             throw new ResourceNotFoundException("Credit Card not found with id: " + cardId);
         }

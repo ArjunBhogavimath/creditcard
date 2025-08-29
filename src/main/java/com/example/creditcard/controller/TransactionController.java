@@ -24,6 +24,6 @@ public class TransactionController {
 
     @GetMapping("/card/{cardId}")
     public ResponseEntity<Page<Transaction>> getTransactionsByCard(@PathVariable Long cardId, Pageable pageable){
-        return ResponseEntity.ok(transactionService.getTransactinByCard(cardId,pageable));
+        return ResponseEntity.ok(transactionService.getTransactionByCard(cardId,pageable));
     }
 }
