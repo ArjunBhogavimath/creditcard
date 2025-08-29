@@ -121,7 +121,7 @@ http://localhost:8080/h2-console
 
 Settings:  
 - JDBC URL: jdbc:h2:mem:creditcarddb  
-- Username: sa  
+- Username: creditcard  
 - Password: (leave empty)  
 
 ---
